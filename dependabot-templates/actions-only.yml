@@ -1,0 +1,18 @@
+# Retrams org Dependabot template — repos with no app deps / no Dockerfile
+# (e.g. config-only or workflow-only repos). Policy: monthly, grouped,
+# PR-limit 3, 7-day cooldown, routine majors ignored (security fixes still auto-PR).
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    cooldown:
+      default-days: 7
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    groups:
+      actions-all:
+        patterns: ["*"]
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
