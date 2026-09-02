@@ -32,4 +32,4 @@ UNIT: <repo> - <branch> - https://github.com/Retrams-AS/<repo>/pull/<n>
 - [ ] Lockfile in sync with manifest (if dependencies changed)
 - [ ] Docs updated (README / DESIGN) if behavior changed
 - [ ] No secrets or credentials committed
-- [ ] AI-assisted commits are co-authored (harness + model + context length)
+- [ ] AI-assisted commits are co-authored (harness + version + model)
