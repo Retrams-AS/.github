@@ -55,12 +55,25 @@ the approval is that sign-off.**
 
 Agents and AI assistants are welcome, under two rules:
 
-1. **Every AI-assisted commit is co-authored**, naming the harness and the model
-   (plus the harness version when known) — regardless of which agent or model:
+1. **Every AI-assisted commit is co-authored**, naming the harness, its version
+   and the model — regardless of which agent or model:
 
    ```
-   Co-Authored-By: Claude Code 2.1.235 (Claude Opus 5) <noreply@anthropic.com>
+   Co-Authored-By: Claude Code 2.1.251 (Claude Opus 5) <noreply@anthropic.com>
    ```
+
+   Those three fields, and no more, because **the trailer records only what the
+   agent can verify about itself**: the harness and model are stated in its own
+   context, and the version comes from running `claude --version`. The version is
+   required rather than best-effort — agent behaviour changes between releases,
+   and the version is the only way to tell which one wrote a commit. An agent that
+   cannot determine a field asks, instead of guessing it or dropping it.
+
+   **The format is exact, and CI enforces it.** `commit-trailer-check.yml` fails any
+   PR whose Anthropic co-author trailers do not match. What CI cannot check is
+   whether a trailer is *present* — nothing observable from CI reveals that a commit
+   was AI-assisted, so presence is the contributor's responsibility. Agents: the
+   `retrams-contributing:git-commit` skill carries the field-by-field spec.
 
 2. **A human reviews and verifies all of it before merge.** AI authorship never
    substitutes for review — the contributor is accountable for the correctness
