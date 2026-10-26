@@ -23,6 +23,10 @@ file matching your stack and copy it to your repo's `.github/dependabot.yml`.
   updates only; alert-driven Dependabot *security* updates still open a PR even
   when the only fix is a major bump (requires Dependabot security updates enabled
   for the repo/org). Do **not** replace this with a blanket version pin.
+- **Security updates are grouped too**, one PR per ecosystem (`<ecosystem>-security`,
+  `applies-to: security-updates`). Without it every vulnerable package opens its own
+  PR. Rules for what to do with the alerts are in ADR 0017 in
+  `Retrams-AS/Documentation`.
 - **github-actions** refs stay SHA-pinned with a `# vX.Y.Z` comment; Dependabot
   bumps both the SHA and the comment in place.
 
